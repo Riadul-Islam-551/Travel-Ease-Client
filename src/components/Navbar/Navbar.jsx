@@ -56,7 +56,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="font-bold">
+          <a className="font-bold p-1">
             Travel <span className="text-primary">Ease</span>
           </a>
         </div>

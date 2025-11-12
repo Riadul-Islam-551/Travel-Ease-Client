@@ -19,7 +19,7 @@
   --color-accent: #FEB21A;
 
   /* background */
-  --color-neutral: #FDF4E3;
+  --color-neutral: #f3f8ff;
 
   /* text */
   --color-base-200: #535353;
@@ -27,5 +27,7 @@
 
 #root{
   font-family: "Poppins", sans-serif;
-
+}
+.background{
+  color: #f3f8ff;
 }

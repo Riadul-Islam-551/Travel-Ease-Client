@@ -4,7 +4,8 @@ import Navbar from '../../components/Navbar/Navbar'
 const AddVehicles = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
+      add 
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import Navbar from "../../components/Navbar/Navbar";
 import Home from "../../pages/Home/Home";
 import Banner from "../../components/Banner/Banner";
+import HomeVehecle from "../../components/HomeVehecle/HomeVehecle";
 
 const HomeLayout = () => {
   return (
@@ -11,7 +12,6 @@ const HomeLayout = () => {
         <Navbar></Navbar>
       </header>
       <main>
-        <Banner></Banner>
         <Outlet></Outlet>
       </main>
 

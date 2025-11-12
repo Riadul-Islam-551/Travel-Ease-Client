@@ -4,7 +4,9 @@ import Navbar from "../../components/Navbar/Navbar";
 const AllVehicles = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
+      all
+
     </div>
   );
 };

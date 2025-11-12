@@ -4,7 +4,8 @@ import Navbar from "../../components/Navbar/Navbar";
 const Booking = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
+      booking
     </div>
   );
 };

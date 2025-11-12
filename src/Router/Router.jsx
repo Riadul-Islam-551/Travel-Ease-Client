@@ -11,27 +11,30 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    children: [{ index: true, element: <Home></Home> }],
-  },
-  {
-    path: "/vehicles",
-    element: <AllVehicles></AllVehicles>,
-  },
-  {
-    path: "/addVehicles",
-    element: <AddVehicles></AddVehicles>,
-  },
-  {
-    path: "/myVehicles",
-    element: <MyVehecles></MyVehecles>,
-  },
-  {
-    path: "/booking",
-    element: <Booking></Booking>,
-  },
-  {
-    path: "/register",
-    element: <Register></Register>,
+    children: [
+      { index: true, 
+        element: <Home></Home> },
+      {
+        path: "/vehicles",
+        element: <AllVehicles></AllVehicles>,
+      },
+      {
+        path: "/addVehicles",
+        element: <AddVehicles></AddVehicles>,
+      },
+      {
+        path: "/myVehicles",
+        element: <MyVehecles></MyVehecles>,
+      },
+      {
+        path: "/booking",
+        element: <Booking></Booking>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+    ],
   },
 ]);
 
