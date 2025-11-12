@@ -29,10 +29,15 @@ const VehecleCard = ({ vehecle }) => {
             Price Per Day:{" "}
             <span className="font-bold text-secondary">${pricePerDay}</span>
           </p>
-          <div className="card-actions">
+          <div className="flex justify-start items-center gap-4">
+            <p className="p-2 text-center rounded bg-[#dfdfdf] ">{location}</p>
+            <p className="p-2 text-center rounded bg-[#dfdfdf] ">Category: {category}</p>
+          </div>
+          <div className="card-actions flex justify-around items-center">
+            <p className="btn btn-secondary shadow-none">{availability}</p>
             <Link
               to={`/details/:${_id}`}
-              className="btn btn-primary shadow-none"
+              className="btn btn-primary shadow-none "
             >
               See details
             </Link>
