@@ -11,7 +11,7 @@ const VehecleCard = ({ vehecle }) => {
   } = vehecle;
   return (
     <div className="mx-auto ">
-      <div className="card w-96 shadow-lg bg-neutral">
+      <div className="card w-96 shadow-sm hover:shadow-lg bg-neutral">
         <figure className="px-10 pt-10">
           <div className=" w-[300px] h-[180px]">
             <img

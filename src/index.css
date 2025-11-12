@@ -22,12 +22,12 @@
   --color-neutral: #f3f8ff;
 
   /* text */
-  --color-base-200: #535353;
+  --color-base-200: #888888;
 }
 
 #root{
   font-family: "Poppins", sans-serif;
 }
 .background{
-  color: #f3f8ff;
+  color: #fff0ef;
 }

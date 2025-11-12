@@ -9,7 +9,6 @@ const HomeVehecle = () => {
     fetch("http://localhost:3000/vehecles/limit")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setVehecles(data);
       });
   }, []);
