@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Booking = () => {
   return (
     <div>
-      booking 
+      <Navbar></Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default Booking
+export default Booking;

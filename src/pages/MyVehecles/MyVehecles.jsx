@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 
 const MyVehecles = () => {
   return (
     <div>
-      my MyVehecles
+      <Navbar></Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default MyVehecles
+export default MyVehecles;

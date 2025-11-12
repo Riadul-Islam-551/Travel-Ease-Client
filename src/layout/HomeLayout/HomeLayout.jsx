@@ -1,6 +1,8 @@
-import React from 'react'
-import { Outlet } from 'react-router'
-import Navbar from '../../components/Navbar/Navbar'
+import React from "react";
+import { Outlet } from "react-router";
+import Navbar from "../../components/Navbar/Navbar";
+import Home from "../../pages/Home/Home";
+import Banner from "../../components/Banner/Banner";
 
 const HomeLayout = () => {
   return (
@@ -8,10 +10,14 @@ const HomeLayout = () => {
       <header>
         <Navbar></Navbar>
       </header>
-      <Outlet></Outlet>
+      <main>
+        <Banner></Banner>
+        <Outlet></Outlet>
+      </main>
+
       <footer></footer>
     </div>
-  )
-}
+  );
+};
 
-export default HomeLayout
+export default HomeLayout;

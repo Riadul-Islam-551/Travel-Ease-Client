@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Register = () => {
   return (
     <div>
-      register
+      <Navbar></Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

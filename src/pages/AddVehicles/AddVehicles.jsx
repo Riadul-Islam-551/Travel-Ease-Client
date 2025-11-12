@@ -1,9 +1,10 @@
 import React from 'react'
+import Navbar from '../../components/Navbar/Navbar'
 
 const AddVehicles = () => {
   return (
     <div>
-      add vehicles 
+      <Navbar></Navbar>
     </div>
   )
 }

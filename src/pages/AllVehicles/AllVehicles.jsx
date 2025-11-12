@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 
 const AllVehicles = () => {
   return (
     <div>
-      All vehicles 
+      <Navbar></Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default AllVehicles
+export default AllVehicles;
