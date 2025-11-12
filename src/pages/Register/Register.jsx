@@ -87,7 +87,7 @@ const Register = () => {
                 </div>
 
                 <div>
-                  <p className="text-secondary text-xs">{mess}</p>
+                  <p className="text-secondary text-xs w-[300px]">{mess}</p>
                 </div>
                 <div>
                   <a className="link link-hover">Forgot password?</a>
