@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 
 const VehecleCard = ({ vehecle }) => {
   const {
+    _id,
     vehicleName,
     category,
     pricePerDay,
@@ -23,9 +25,17 @@ const VehecleCard = ({ vehecle }) => {
         </figure>
         <div className="card-body ">
           <h2 className="card-title">{vehicleName}</h2>
-          <p>Price Per Day: <span className="font-bold text-secondary">${pricePerDay}</span></p>
+          <p>
+            Price Per Day:{" "}
+            <span className="font-bold text-secondary">${pricePerDay}</span>
+          </p>
           <div className="card-actions">
-            <button className="btn btn-primary shadow-none">See details</button>
+            <Link
+              to={`/details/:${_id}`}
+              className="btn btn-primary shadow-none"
+            >
+              See details
+            </Link>
           </div>
         </div>
       </div>

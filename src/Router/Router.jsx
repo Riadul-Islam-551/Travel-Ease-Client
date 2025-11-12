@@ -6,6 +6,7 @@ import AddVehicles from "../pages/AddVehicles/AddVehicles";
 import MyVehecles from "../pages/MyVehecles/MyVehecles";
 import Booking from "../pages/Booking/Booking";
 import Register from "../pages/Register/Register";
+import DetailsLayout from "../layout/DetailsLayout/DetailsLayout";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/details/:id",
+    element: <DetailsLayout></DetailsLayout>
+  }
 ]);
 
 export default router;
