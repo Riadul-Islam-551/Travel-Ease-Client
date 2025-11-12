@@ -33,7 +33,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="vehicles"
+                to="/vehicles"
                 className="hover:text-secondary transition text-sm"
               >
                 All Vehicles
