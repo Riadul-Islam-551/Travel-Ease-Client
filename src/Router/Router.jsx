@@ -7,6 +7,7 @@ import MyVehecles from "../pages/MyVehecles/MyVehecles";
 import Booking from "../pages/Booking/Booking";
 import Register from "../pages/Register/Register";
 import DetailsLayout from "../layout/DetailsLayout/DetailsLayout";
+import About from "../layout/About/About";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/details/:id",
     element: <DetailsLayout></DetailsLayout>
+  },
+  {
+    path: "/about",
+    element: <About></About>
   }
 ]);
 

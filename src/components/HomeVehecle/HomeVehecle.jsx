@@ -6,7 +6,7 @@ const HomeVehecle = () => {
   const [vehecles, setVehecles] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/vehecles/limit")
+    fetch("http://localhost:3000/vehicles/limit")
       .then((res) => res.json())
       .then((data) => {
         setVehecles(data);

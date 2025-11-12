@@ -29,7 +29,6 @@ const AboutCompany = () => {
           </div>
         </div>
       </div>
-      .......
       {/* <section className="bg-base-100 py-20">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           
