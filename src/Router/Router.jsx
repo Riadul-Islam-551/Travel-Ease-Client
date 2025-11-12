@@ -14,8 +14,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomeLayout></HomeLayout>,
     children: [
-      { index: true, 
-        element: <Home></Home> },
+      { index: true, element: <Home></Home> },
       {
         path: "/vehicles",
         element: <AllVehicles></AllVehicles>,
@@ -39,13 +38,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/details/:id",
-    element: <DetailsLayout></DetailsLayout>
+    path: "/vehicles/:id",
+    loader: ({ params }) => fetch(`http://localhost:3000/vehicles/${params.id}`),
+    element: <DetailsLayout></DetailsLayout>,
   },
   {
     path: "/about",
-    element: <About></About>
-  }
+    element: <About></About>,
+  },
 ]);
 
 export default router;

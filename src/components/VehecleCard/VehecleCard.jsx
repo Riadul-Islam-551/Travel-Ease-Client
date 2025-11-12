@@ -13,7 +13,7 @@ const VehecleCard = ({ vehecle }) => {
   } = vehecle;
   return (
     <div className="mx-auto ">
-      <div className="card w-96 shadow-sm hover:shadow-lg bg-neutral">
+      <div className="card  w-72 md:w-[320px] shadow-sm hover:shadow-lg bg-neutral">
         <figure className="px-10 pt-10">
           <div className=" w-[300px] h-[180px]">
             <img
@@ -31,12 +31,14 @@ const VehecleCard = ({ vehecle }) => {
           </p>
           <div className="flex justify-start items-center gap-4">
             <p className="p-2 text-center rounded bg-[#dfdfdf] ">{location}</p>
-            <p className="p-2 text-center rounded bg-[#dfdfdf] ">Category: {category}</p>
+            <p className="p-2 text-center rounded bg-[#dfdfdf] ">
+              Category: {category}
+            </p>
           </div>
           <div className="card-actions flex justify-around items-center">
             <p className="btn btn-secondary shadow-none">{availability}</p>
             <Link
-              to={`/details/:${_id}`}
+              to={`/vehicles/${_id}`}
               className="btn btn-primary shadow-none "
             >
               See details
