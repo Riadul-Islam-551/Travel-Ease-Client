@@ -8,6 +8,7 @@ import Booking from "../pages/Booking/Booking";
 import Register from "../pages/Register/Register";
 import DetailsLayout from "../layout/DetailsLayout/DetailsLayout";
 import About from "../layout/About/About";
+import Login from "../pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
     path: "/about",
     element: <About></About>,
   },
+  {
+    path: "login",
+    element: <Login></Login>
+  }
 ]);
 
 export default router;
