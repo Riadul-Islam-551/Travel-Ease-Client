@@ -27,7 +27,7 @@ const DetailsVehicle = () => {
     const buyer = {
       vehicleID: _id,
       name: user.displayName,
-      email: user.email,
+      bookedEmail: user.email,
       photo: user.photoURL,
       vehicle: vehicleName,
       category: category,
