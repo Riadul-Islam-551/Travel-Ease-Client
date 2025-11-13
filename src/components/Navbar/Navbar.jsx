@@ -4,7 +4,7 @@ import "./nav.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-  const {user} = use(AuthContext)
+  const { user , logoutUser} = use(AuthContext);
   const links = (
     <>
       <NavLink to="/" className="mx-2 p-1 rounded ">
@@ -27,6 +27,17 @@ const Navbar = () => {
       </NavLink>
     </>
   );
+
+  const handleLogOut = () => {
+    console.log("handle log out");
+    logoutUser()
+      .then(() => {
+        alert("loged out succesfully");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   // Home, All Vehicles, Add Vehicle, My Vehicles, My
   // Bookings, Login/Register
   return (
@@ -65,13 +76,19 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
+
         <div className="navbar-end">
-          <Link to="/login" className="btn btn-primary">Sign In</Link>
+          {user ? (
+            <Link onClick={handleLogOut} to="/" className="btn btn-primary">
+              Sign Out
+            </Link>
+          ) : (
+            <Link to="/login" className="btn btn-primary">
+              Sign In
+            </Link>
+          )}
         </div>
-        <div>
-          {user && user.email}
-        </div>
-        
+        {user && <span>{user.email}</span>} 
       </div>
     </div>
   );
