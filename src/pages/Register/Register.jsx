@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
   const [mess, setmess] = useState();
   const [showPass, setShowPass] = useState(false);
-
+  const { createUser, setUser } = use(AuthContext);
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -21,7 +22,21 @@ const Register = () => {
       return;
     }
     const newUser = [name, email, photo, password];
-    console.log(newUser);
+    // console.log(newUser);
+
+    createUser(email, password)
+      .then((result) => {
+        // Signed up
+        const user = result.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+        // ..
+      });
   };
 
   const handlePassword = (e) => {

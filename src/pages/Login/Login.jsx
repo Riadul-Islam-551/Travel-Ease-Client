@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const [mess, setmess] = useState();
   const [showPass, setShowPass] = useState(false);
+  const { signInUser, setUser } = use(AuthContext);
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -19,8 +21,22 @@ const Login = () => {
       );
       return;
     }
-    const newUser = [ email, password];
-    console.log(newUser);
+    const newUser = [email, password];
+    // console.log(newUser);
+
+    signInUser(email, password)
+      .then((result) => {
+        // Signed in
+        const user = result.user;
+        console.log(user);
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   const handlePassword = (e) => {
