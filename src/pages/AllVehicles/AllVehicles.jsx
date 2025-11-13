@@ -26,7 +26,7 @@ const AllVehicles = () => {
         </div>
       </section>
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-auto ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-auto my-12">
           {vehecles.map((vehecle) => (
             <VehecleCard key={vehecle._id} vehecle={vehecle} />
           ))}
