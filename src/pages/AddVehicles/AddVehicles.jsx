@@ -1,9 +1,54 @@
 import React, { use } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 const AddVehicles = () => {
-  const {user} = use(AuthContext)
+  const { user } = use(AuthContext);
+  const handleAddVehicle = (e) => {
+    e.preventDefault();
+    const name = e.target.owner.value;
+    const vehicleName = e.target.vehicleName.value;
+    const category = e.target.category.value;
+    const price = e.target.pricePerDay.value;
+    const location = e.target.location.value;
+    const availability = e.target.availability.value;
+    const description = e.target.description.value;
+    const coverImage = e.target.coverImage.value;
+    const email = e.target.userEmail.value;
+
+    const newVehicle = {
+      name,
+      vehicleName,
+      category,
+      price,
+      location,
+      availability,
+      description,
+      coverImage,
+      email,
+    };
+
+    // console.log(newVehicle);
+
+    fetch("http://localhost:3000/vehicles", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newVehicle),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          swal("Success!", "You Booked the Vehicle successfully!", "success");
+        }
+      })
+      .catch((err) => {
+        swal("Error!", "There is something error", "error");
+      });
+  };
   return (
     <div className="bg-[#f1f1f1] min-h-screen py-16 px-6">
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl shadow-blue-200 p-8">
@@ -12,7 +57,7 @@ const AddVehicles = () => {
         </h1>
 
         <form
-          
+          onSubmit={handleAddVehicle}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {/* Vehicle Name */}

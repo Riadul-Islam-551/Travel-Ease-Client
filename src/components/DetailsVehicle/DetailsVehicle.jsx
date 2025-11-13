@@ -43,13 +43,11 @@ const DetailsVehicle = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           swal("Success!", "You Booked the Vehicle successfully!", "success");
         }
       })
       .catch((err) => {
-        console.error(err);
         swal("Error!", "There is something error", "error");
       });
   };
