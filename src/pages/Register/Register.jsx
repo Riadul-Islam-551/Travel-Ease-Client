@@ -1,16 +1,16 @@
 import React, { use, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
-import swal from 'sweetalert';
-
+import swal from "sweetalert";
 
 const Register = () => {
+  const navigate = useNavigate()
   const [mess, setmess] = useState();
   const [showPass, setShowPass] = useState(false);
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, setUser, updateUser } = use(AuthContext);
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -23,14 +23,22 @@ const Register = () => {
       );
       return;
     }
-    const newUser = [name, email, photo, password];
+    // const newUser = [name, email, photo, password];
     // console.log(newUser);
 
     createUser(email, password)
       .then((result) => {
         // Signed up
         const user = result.user;
-        setUser(user);
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+          })
+          .catch((error) => {
+            setUser(user);
+          });
+        e.target.reset();
+        navigate("/")
         swal("Success!", "You Register the site successfully!", "success");
         // ...
       })

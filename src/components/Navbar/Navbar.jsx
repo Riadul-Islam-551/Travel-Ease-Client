@@ -2,10 +2,11 @@ import React, { use } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import "./nav.css";
 import { AuthContext } from "../../Provider/AuthProvider";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import profile from "../../assets/profile.png";
 
 const Navbar = () => {
-  const { user , logoutUser} = use(AuthContext);
+  const { user, logoutUser } = use(AuthContext);
   const links = (
     <>
       <NavLink to="/" className="mx-2 p-1 rounded ">
@@ -78,17 +79,17 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
+          <div className="mr-2">{<img src={`${user ? user.photoURL : profile}`} alt="" />}</div>
           {user ? (
-            <Link onClick={handleLogOut} to="/" className="btn btn-primary">
+            <Link onClick={handleLogOut} to="/" className="btn btn-primary shadow-none">
               Sign Out
             </Link>
           ) : (
-            <Link to="/login" className="btn btn-primary">
+            <Link to="/login" className="btn btn-primary shadow-none">
               Sign In
             </Link>
           )}
         </div>
-        {user && <span>{user.email}</span>} 
       </div>
     </div>
   );
