@@ -21,8 +21,10 @@ const Booking = () => {
   }, [user?.email]);
 
   return (
-    <div className="overflow-x-auto min-h-screen">
-      {bookedUsers?.length}
+    <div className="overflow-x-auto min-h-screen max-w-[1200px] mx-auto">
+      <h2 className="text-xl font-semibold my-4 ">
+        My Booked Vehicles ({bookedUsers?.length})
+      </h2>
       <div>
         <table
           key={bookedUsers._id}
