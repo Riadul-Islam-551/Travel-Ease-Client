@@ -4,11 +4,15 @@ export const AuthContext = createContext();
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
 
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
@@ -29,6 +33,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // sign in with google
+  const signInwithGoole = () => {
+    setLoader(true);
+    return signInWithPopup(auth, googleProvider);
+  };
   // update user
   const updateUser = (updatedData) => {
     return updateProfile(auth.currentUser, updatedData);
@@ -58,6 +67,7 @@ const AuthProvider = ({ children }) => {
     loader,
     setLoader,
     updateUser,
+    signInwithGoole,
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;

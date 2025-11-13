@@ -9,13 +9,14 @@ import swal from "sweetalert";
 
 const Login = () => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const [mess, setmess] = useState();
   const [showPass, setShowPass] = useState(false);
-  const { signInUser, setUser } = use(AuthContext);
+  const { signInUser, setUser, signInwithGoole } = use(AuthContext);
 
   const handleRegistration = (e) => {
     e.preventDefault();
+
     const email = e.target.email.value;
     const password = e.target.password.value;
     if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
@@ -33,6 +34,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setUser(user);
+        e.target.reset();
         swal("Success!", "You Loged in the site successfully!", "success");
         navigate(`${location.state ? location.state : "/"}`);
         // ...
@@ -42,6 +44,15 @@ const Login = () => {
         const errorMessage = error.message;
         swal("Error!", "There is somothing wrong", "error");
       });
+  };
+
+  const handleGoogle = (e) => {
+    e.preventDefault();
+    signInwithGoole()
+      .then((result) =>
+        swal("Success!", "You Register the site successfully!", "success")
+      )
+      .catch((error) => swal("Error!", "There is something wrong", "error"));
   };
 
   const handlePassword = (e) => {
@@ -104,7 +115,10 @@ const Login = () => {
                     </p>
                   </div>
                   {/* google button  */}
-                  <button className="btn bg-white text-black border-[#e5e5e5] mt-4 shadow-none">
+                  <button
+                    onClick={handleGoogle}
+                    className="btn bg-white text-black border-[#e5e5e5] mt-4 shadow-none"
+                  >
                     <svg
                       aria-label="Google logo"
                       width="16"
