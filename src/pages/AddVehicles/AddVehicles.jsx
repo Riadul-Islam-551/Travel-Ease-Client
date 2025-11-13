@@ -15,7 +15,7 @@ const AddVehicles = () => {
     const availability = e.target.availability.value;
     const description = e.target.description.value;
     const coverImage = e.target.coverImage.value;
-    const email = e.target.userEmail.value;
+    const userEmail = e.target.userEmail.value;
     const createdAt = new Date()
 
     const newVehicle = {
@@ -27,7 +27,7 @@ const AddVehicles = () => {
       availability,
       description,
       coverImage,
-      email,
+      userEmail,
       createdAt
     };
 
