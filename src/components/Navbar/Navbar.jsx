@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import "./nav.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from 'sweetalert';
@@ -30,7 +30,6 @@ const Navbar = () => {
   );
 
   const handleLogOut = () => {
-    console.log("handle log out");
     logoutUser()
       .then(() => {
         swal("Success!", "You Loged out successfully!", "success");

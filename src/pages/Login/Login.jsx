@@ -3,11 +3,13 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation()
   const [mess, setmess] = useState();
   const [showPass, setShowPass] = useState(false);
   const { signInUser, setUser } = use(AuthContext);
@@ -32,6 +34,7 @@ const Login = () => {
         console.log(user);
         setUser(user);
         swal("Success!", "You Loged in the site successfully!", "success");
+        navigate(`${location.state ? location.state : "/"}`);
         // ...
       })
       .catch((error) => {
