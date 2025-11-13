@@ -97,28 +97,7 @@ const DetailsVehicle = () => {
             <button onClick={handleBook} className="btn btn-primary px-6">
               Book Now
             </button>
-            {/* modal  */}
-            {/* <div>
-              <label htmlFor="my_modal_6" className="btn btn-primary">
-                Book Now
-              </label>
-
-              <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-              <div className="modal" role="dialog">
-                <div className="modal-box">
-                  <h3 className="text-lg font-bold text-primary">Book Now !</h3>
-                  <p className="py-4">We aimed to provide a good service</p>
-                  <form onSubmit={handleBook} className="border">
-                    <input
-                      type="text"
-                      value={user.displayName}
-                      className="input"
-                    />
-                    <div className="modal-action"><button type="submit">book!</button></div>
-                  </form>
-                </div>
-              </div>
-            </div> */}
+            
             <span
               className={`badge ${
                 availability === "Available" ? "badge-success" : "badge-error"

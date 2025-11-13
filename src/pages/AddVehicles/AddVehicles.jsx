@@ -7,26 +7,28 @@ const AddVehicles = () => {
   const { user } = use(AuthContext);
   const handleAddVehicle = (e) => {
     e.preventDefault();
-    const name = e.target.owner.value;
+    const owner = e.target.owner.value;
     const vehicleName = e.target.vehicleName.value;
     const category = e.target.category.value;
-    const price = e.target.pricePerDay.value;
+    const pricePerDay = e.target.pricePerDay.value;
     const location = e.target.location.value;
     const availability = e.target.availability.value;
     const description = e.target.description.value;
     const coverImage = e.target.coverImage.value;
     const email = e.target.userEmail.value;
+    const createdAt = new Date()
 
     const newVehicle = {
-      name,
+      owner,
       vehicleName,
       category,
-      price,
+      pricePerDay,
       location,
       availability,
       description,
       coverImage,
       email,
+      createdAt
     };
 
     // console.log(newVehicle);
@@ -43,6 +45,7 @@ const AddVehicles = () => {
         console.log(data);
         if (data.insertedId) {
           swal("Success!", "You Booked the Vehicle successfully!", "success");
+          e.target.reset();
         }
       })
       .catch((err) => {
