@@ -10,6 +10,7 @@ import DetailsLayout from "../layout/DetailsLayout/DetailsLayout";
 import About from "../layout/About/About";
 import Login from "../pages/Login/Login";
 import Error from "../pages/Error/Error";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,21 +42,26 @@ const router = createBrowserRouter([
   },
   {
     path: "/vehicles/:id",
-    loader: ({ params }) => fetch(`http://localhost:3000/vehicles/${params.id}`),
-    element: <DetailsLayout></DetailsLayout>,
+    loader: ({ params }) =>
+      fetch(`http://localhost:3000/vehicles/${params.id}`),
+    element: (
+      <PrivateRoute>
+        <DetailsLayout></DetailsLayout>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/about",
     element: <About></About>,
   },
   {
-    path: "login",
-    element: <Login></Login>
+    path: "/login",
+    element: <Login></Login>,
   },
   {
     path: "*",
-    element: <Error></Error>
-  }
+    element: <Error></Error>,
+  },
 ]);
 
 export default router;
