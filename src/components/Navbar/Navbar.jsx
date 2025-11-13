@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import "./nav.css";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from 'sweetalert';
 
 const Navbar = () => {
   const { user , logoutUser} = use(AuthContext);
@@ -32,7 +33,7 @@ const Navbar = () => {
     console.log("handle log out");
     logoutUser()
       .then(() => {
-        alert("loged out succesfully");
+        swal("Success!", "You Loged out successfully!", "success");
       })
       .catch((error) => {
         // An error happened.

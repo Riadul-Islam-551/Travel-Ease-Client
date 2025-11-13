@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from 'sweetalert';
+
 
 const Register = () => {
   const [mess, setmess] = useState();
@@ -29,12 +31,13 @@ const Register = () => {
         // Signed up
         const user = result.user;
         setUser(user);
+        swal("Success!", "You Register the site successfully!", "success");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        swal("Error!", "There is something wrong", "error");
         // ..
       });
   };

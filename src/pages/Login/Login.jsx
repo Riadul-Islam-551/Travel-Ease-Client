@@ -5,6 +5,7 @@ import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 const Login = () => {
   const [mess, setmess] = useState();
@@ -30,12 +31,13 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setUser(user);
+        swal("Success!", "You Loged in the site successfully!", "success");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        swal("Error!", "There is somothing wrong", "error");
       });
   };
 
