@@ -11,6 +11,7 @@ import About from "../layout/About/About";
 import Login from "../pages/Login/Login";
 import Error from "../pages/Error/Error";
 import PrivateRoute from "../Provider/PrivateRoute";
+import Loading from "../components/Loading/Loading";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
         <DetailsLayout></DetailsLayout>
       </PrivateRoute>
     ),
+    hydrateFallbackElement: <Loading></Loading>,
   },
   {
     path: "/about",

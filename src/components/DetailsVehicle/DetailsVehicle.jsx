@@ -1,9 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import { FaLocationDot, FaUser, FaCarSide } from "react-icons/fa6";
 import { useLoaderData } from "react-router";
+import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 const DetailsVehicle = () => {
   const data = useLoaderData();
+  const { user } = use(AuthContext);
   console.log(data._id);
 
   const {
@@ -20,7 +23,37 @@ const DetailsVehicle = () => {
     createdAt,
   } = data;
 
- 
+  const handleBook = () => {
+    const buyer = {
+      vehicleID: _id,
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      vehicle: vehicleName,
+      category: category,
+    };
+    console.log("handle book", buyer);
+
+    fetch("http://localhost:3000/booked", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(buyer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          swal("Success!", "You Booked the Vehicle successfully!", "success");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        swal("Error!", "There is something error", "error");
+      });
+  };
+
   return (
     <div className="bg-base-100  py-16 px-6">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -63,12 +96,34 @@ const DetailsVehicle = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="btn btn-primary px-6">Book Now</button>
+            <button onClick={handleBook} className="btn btn-primary px-6">
+              Book Now
+            </button>
+            {/* modal  */}
+            {/* <div>
+              <label htmlFor="my_modal_6" className="btn btn-primary">
+                Book Now
+              </label>
+
+              <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+              <div className="modal" role="dialog">
+                <div className="modal-box">
+                  <h3 className="text-lg font-bold text-primary">Book Now !</h3>
+                  <p className="py-4">We aimed to provide a good service</p>
+                  <form onSubmit={handleBook} className="border">
+                    <input
+                      type="text"
+                      value={user.displayName}
+                      className="input"
+                    />
+                    <div className="modal-action"><button type="submit">book!</button></div>
+                  </form>
+                </div>
+              </div>
+            </div> */}
             <span
               className={`badge ${
-                availability === "Available"
-                  ? "badge-success"
-                  : "badge-error"
+                availability === "Available" ? "badge-success" : "badge-error"
               } text-white`}
             >
               {availability}
@@ -83,11 +138,10 @@ const DetailsVehicle = () => {
           About This Vehicle
         </h2>
         <p className="leading-relaxed">
-          Listed on{" "}
-          <strong>{new Date(createdAt).toDateString()}</strong> by{" "}
-          <span className="font-semibold">{owner}</span>. Enjoy smooth
-          driving, premium interiors, and a reliable booking experience
-          with <span className="text-primary font-semibold">TravelEase</span>.
+          Listed on <strong>{new Date(createdAt).toDateString()}</strong> by{" "}
+          <span className="font-semibold">{owner}</span>. Enjoy smooth driving,
+          premium interiors, and a reliable booking experience with{" "}
+          <span className="text-primary font-semibold">TravelEase</span>.
         </p>
       </div>
     </div>
