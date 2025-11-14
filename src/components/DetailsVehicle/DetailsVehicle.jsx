@@ -3,8 +3,10 @@ import { FaLocationDot, FaUser, FaCarSide } from "react-icons/fa6";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const DetailsVehicle = () => {
+  const axiosSecure = useAxiosSecure();
   const data = useLoaderData();
   const { user } = use(AuthContext);
   console.log(data._id);
@@ -34,16 +36,10 @@ const DetailsVehicle = () => {
     };
     console.log("handle book", buyer);
 
-    fetch("http://localhost:3000/booked", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(buyer),
-    })
-      .then((res) => res.json())
+    axiosSecure
+      .post("http://localhost:3000/booked", buyer)
       .then((data) => {
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           swal("Success!", "You Booked the Vehicle successfully!", "success");
         }
       })
@@ -97,7 +93,7 @@ const DetailsVehicle = () => {
             <button onClick={handleBook} className="btn btn-primary px-6">
               Book Now
             </button>
-            
+
             <span
               className={`badge ${
                 availability === "Available" ? "badge-success" : "badge-error"

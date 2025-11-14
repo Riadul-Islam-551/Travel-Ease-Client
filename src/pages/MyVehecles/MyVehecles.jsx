@@ -2,16 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyVehicleCard from "../../components/MyVehicleCard/MyVehicleCard";
 import Swal from "sweetalert2";
+import useAxios from "../../hooks/useAxios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyVehecles = () => {
+  const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [bookedUsers, setBookedUser] = useState([]);
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/vehicles?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => setBookedUser(data))
+      axiosInstance
+        .get(`/vehicles?email=${user.email}`)
+        .then((data) => setBookedUser(data.data))
         .catch((err) => console.log(err));
     }
   }, [user?.email]);
@@ -27,13 +31,15 @@ const MyVehecles = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/vehicles/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
+        axiosSecure
+          .delete(`/vehicles/${id}`)
           .then((data) => {
-            if (data.deletedCount) {
-              Swal.fire("Deleted!", "Your vehicle has been deleted.", "success");
+            if (data.data.deletedCount) {
+              Swal.fire(
+                "Deleted!",
+                "Your vehicle has been deleted.",
+                "success"
+              );
               const remainingVehicles = bookedUsers.filter(
                 (vehicle) => vehicle._id !== id
               );

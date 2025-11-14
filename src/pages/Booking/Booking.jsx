@@ -1,18 +1,19 @@
 import React, { use, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Booking = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = use(AuthContext);
   const [bookedUsers, setBookedUser] = useState([]);
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/booked?email=${user.email}`)
-        .then((res) => res.json())
+      axiosSecure
+        .get(`/booked?email=${user.email}`)
         .then((data) => {
-          console.log(data);
-          setBookedUser(data);
+          setBookedUser(data.data);
         })
         .catch((err) => {
           console.log(err);
@@ -63,7 +64,7 @@ const Booking = () => {
                   <span className="">{bookedUser.vehicle}</span>
                 </td>
                 <td>
-                   <span className="font-bold">{bookedUser.category}</span>
+                  <span className="font-bold">{bookedUser.category}</span>
                 </td>
               </tr>
             ))}

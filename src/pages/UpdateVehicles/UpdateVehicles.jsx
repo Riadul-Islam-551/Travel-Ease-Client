@@ -1,8 +1,12 @@
 import React, { use } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxios from "../../hooks/useAxios";
 
 const UpdateVehicles = () => {
+  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios
   const vehicle = useLoaderData();
   const navigate = useNavigate();
 
@@ -25,14 +29,8 @@ const UpdateVehicles = () => {
     };
     // console.log(updateVehicle);
 
-    fetch(`http://localhost:3000/vehicles/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateVehicle),
-    })
-      .then((res) => res.json())
+    axiosSecure
+      .patch(`/vehicles/${_id}`, updateVehicle)
       .then((data) => {
         Swal.fire({
           title: "Successfully update data",

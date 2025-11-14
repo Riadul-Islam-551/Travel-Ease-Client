@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import VehecleCard from "../../components/VehecleCard/VehecleCard";
+import useAxios from "../../hooks/useAxios";
 
 const AllVehicles = () => {
+  const axiosInstance = useAxios();
   const [vehecles, setVehecles] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -74,11 +76,11 @@ const AllVehicles = () => {
   ];
 
   useEffect(() => {
-    fetch("http://localhost:3000/vehicles")
-      .then((res) => res.json())
+    axiosInstance
+      .get("http://localhost:3000/vehicles")
       .then((data) => {
-        setVehecles(data);
-        setFiltered(data);
+        setVehecles(data.data);
+        setFiltered(data.data);
 
         const uniqueLocations = [...new Set(data.map((v) => v.location))];
         setLocations(uniqueLocations);
@@ -114,7 +116,7 @@ const AllVehicles = () => {
         </div>
       </section>
       {/* filterd section  */}
-      
+
       <section className="flex justify-between items-center m-6">
         <section>
           <p>Total : {filtered.length}</p>
@@ -124,7 +126,9 @@ const AllVehicles = () => {
           value={selectedLocation}
           onChange={(e) => handleFilter(e.target.value)}
         >
-          <option value="All" className="">All Districts</option>
+          <option value="All" className="">
+            All Districts
+          </option>
 
           {bangladeshDistricts.map((district, idx) => (
             <option key={idx} value={district}>

@@ -2,9 +2,12 @@ import React, { use } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
+import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddVehicles = () => {
   const { user } = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const handleAddVehicle = (e) => {
     e.preventDefault();
     const owner = e.target.owner.value;
@@ -16,7 +19,7 @@ const AddVehicles = () => {
     const description = e.target.description.value;
     const coverImage = e.target.coverImage.value;
     const userEmail = e.target.userEmail.value;
-    const createdAt = new Date()
+    const createdAt = new Date();
 
     const newVehicle = {
       owner,
@@ -28,22 +31,14 @@ const AddVehicles = () => {
       description,
       coverImage,
       userEmail,
-      createdAt
+      createdAt,
     };
 
     // console.log(newVehicle);
 
-    fetch("http://localhost:3000/vehicles", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newVehicle),
-    })
-      .then((res) => res.json())
+    axiosSecure.post("/vehicles", newVehicle)
       .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           swal("Success!", "You Booked the Vehicle successfully!", "success");
           e.target.reset();
         }
@@ -51,6 +46,25 @@ const AddVehicles = () => {
       .catch((err) => {
         swal("Error!", "There is something error", "error");
       });
+
+    //    fetch("http://localhost:3000/vehicles", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(newVehicle),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       swal("Success!", "You Booked the Vehicle successfully!", "success");
+    //       e.target.reset();
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     swal("Error!", "There is something error", "error");
+    //   });
   };
   return (
     <div className="bg-[#f1f1f1] min-h-screen py-16 px-6">
