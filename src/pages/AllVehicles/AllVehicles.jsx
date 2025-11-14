@@ -77,7 +77,7 @@ const AllVehicles = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("http://localhost:3000/vehicles")
+      .get("/vehicles")
       .then((data) => {
         setVehecles(data.data);
         setFiltered(data.data);

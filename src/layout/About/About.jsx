@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import aboutBanner from "../../assets/about_banner.jpg"
 
 const About = () => {
   return (
@@ -59,7 +60,7 @@ const About = () => {
 
           <div className="flex justify-center">
             <img
-              src="https://i.ibb.co/dm2ZrVt/travelers-car.jpg"
+              src={aboutBanner}
               alt="TravelEase illustration"
               className="rounded-2xl shadow-xl w-full max-w-md object-cover"
             />

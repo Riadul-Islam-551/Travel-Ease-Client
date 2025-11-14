@@ -49,8 +49,10 @@ const Login = () => {
   const handleGoogle = (e) => {
     e.preventDefault();
     signInwithGoole()
-      .then((result) =>
-        swal("Success!", "You Register the site successfully!", "success")
+      .then(
+        (result) =>
+          swal("Success!", "You Register the site successfully!", "success"),
+        navigate("/")
       )
       .catch((error) => swal("Error!", "There is something wrong", "error"));
   };

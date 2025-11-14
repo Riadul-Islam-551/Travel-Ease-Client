@@ -9,7 +9,7 @@ const DetailsVehicle = () => {
   const axiosSecure = useAxiosSecure();
   const data = useLoaderData();
   const { user } = use(AuthContext);
-  console.log(data._id);
+  // console.log(data._id);
 
   const {
     _id,
