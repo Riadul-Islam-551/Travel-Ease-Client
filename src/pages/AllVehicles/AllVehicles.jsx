@@ -100,7 +100,7 @@ const AllVehicles = () => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto">
+    <div className="max-w-[1200px] mx-auto min-h-screen">
       <section className=" py-12">
         <div className="max-w-6xl mx-auto text-center px-6">
           <h1 className="text-4xl font-bold text-primary mb-4">
