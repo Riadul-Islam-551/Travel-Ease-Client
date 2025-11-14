@@ -31,15 +31,15 @@ const MyVehicleCard = ({ vehecle, handleDeleteVehecle }) => {
           </div>
           <div className="card-actions flex justify-around items-center">
             <div className="w-full flex justify-between items-center">
-              {/* <Link
-                to={`/vehicles/${_id}`}
+              <Link
+                to={`/updateVehicles/${_id}`}
                 className="btn btn-accent shadow-none w-[130px]"
               >
                 Update
-              </Link> */}
+              </Link>
               <button
                 onClick={() => handleDeleteVehecle(_id)}
-                className="btn btn-accent shadow-none w-full"
+                className="btn btn-accent shadow-none w-[130px]"
               >
                 Delete
               </button>

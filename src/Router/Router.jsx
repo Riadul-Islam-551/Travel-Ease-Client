@@ -12,6 +12,7 @@ import Login from "../pages/Login/Login";
 import Error from "../pages/Error/Error";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Loading from "../components/Loading/Loading";
+import UpdateVehicles from "../pages/UpdateVehicles/UpdateVehicles";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,17 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/updateVehicles/:id",
+        loader: ({params}) =>
+          fetch(`http://localhost:3000/vehicles/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateVehicles></UpdateVehicles>
+          </PrivateRoute>
+        ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
     ],
   },
