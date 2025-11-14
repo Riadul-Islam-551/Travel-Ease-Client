@@ -1,9 +1,10 @@
 import React, { use } from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const UpdateVehicles = () => {
   const vehicle = useLoaderData();
+  const navigate = useNavigate();
 
   const { _id, owner, vehicleName, pricePerDay, coverImage, availability } =
     vehicle;
@@ -38,6 +39,7 @@ const UpdateVehicles = () => {
           icon: "success",
           draggable: true,
         });
+        navigate("/myVehicles");
       })
       .catch((error) =>
         Swal.fire({

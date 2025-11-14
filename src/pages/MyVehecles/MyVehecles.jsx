@@ -46,7 +46,7 @@ const MyVehecles = () => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto">
+    <div className="max-w-[1200px] mx-auto min-h-screen">
       <h1 className="text-3xl text-primary font-bold mt-12 text-center">
         Your Vehicles
       </h1>

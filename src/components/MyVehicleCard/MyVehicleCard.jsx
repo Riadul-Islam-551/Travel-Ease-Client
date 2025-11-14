@@ -33,13 +33,13 @@ const MyVehicleCard = ({ vehecle, handleDeleteVehecle }) => {
             <div className="w-full flex justify-between items-center">
               <Link
                 to={`/updateVehicles/${_id}`}
-                className="btn btn-accent shadow-none w-[130px]"
+                className="btn btn-accent shadow-none w-[115px] md:w-[130px]"
               >
                 Update
               </Link>
               <button
                 onClick={() => handleDeleteVehecle(_id)}
-                className="btn btn-accent shadow-none w-[130px]"
+                className="btn btn-accent shadow-none w-[115px] md:w-[130px]"
               >
                 Delete
               </button>
